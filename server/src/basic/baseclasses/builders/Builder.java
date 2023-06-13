@@ -1,4 +1,5 @@
 package basic.baseclasses.builders;
 
-public class Builder {
+public interface Builder {
+    Object build();
 }

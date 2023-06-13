@@ -6,6 +6,7 @@ import basic.baseclasses.Studio;
 import basic.baseclasses.builders.annotations.Generated;
 import basic.baseclasses.builders.annotations.NotNull;
 import basic.baseclasses.builders.annotations.Value;
+import basic.baseenums.MusicGenre;
 
 import java.time.ZonedDateTime;
 

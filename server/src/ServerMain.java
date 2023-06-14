@@ -1,4 +1,4 @@
-import basic.moviecollection.MovieCollection;
+import basic.musicbandcollection.MusicBandCollection;
 import server.UdpServer;
 import utils.config.Config;
 import xml.Xml;
@@ -30,13 +30,13 @@ public class ServerMain {
     }
 
     public static void main(String[] args) {
-        MovieCollection collection;
+        MusicBandCollection collection;
         try {
             collection = new Xml(new File(collectionFileName)).newReader().parse();
         } catch (IOException e) {
             System.err.println("Unable to find collection file " + collectionFileName);
             System.err.println("New collection file will be created automatically after a few changes.");
-            collection = new MovieCollection();
+            collection = new MusicBandCollection();
         }
         UdpServer server = new UdpServer(collection, serverPort);
         server.run();

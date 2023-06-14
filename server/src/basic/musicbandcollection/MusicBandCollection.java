@@ -19,19 +19,19 @@ import java.util.stream.Collectors;
  */
 public class MusicBandCollection extends MusicBandHashtable<Long, MusicBand>{
     /**
-     * Instantiates a new MovieCol object.
+     * Instantiates a new MusicBandCollection object.
      */
-    public MovieCollection() {
+    public MusicBandCollection() {
     }
 
     /**
      * prints the collection elements and its contents to the console
      *
-     * @see Movie
-     * @see Person
+     * @see MusicBand
+     * @see Studio
      */
     public String show() {
-        return Arrays.stream(this.values()).map(Movie::toString).collect(Collectors.joining("\n"));
+        return Arrays.stream(this.values()).map(MusicBand::toString).collect(Collectors.joining("\n"));
     }
 
     /**
@@ -46,9 +46,9 @@ public class MusicBandCollection extends MusicBandHashtable<Long, MusicBand>{
                 .reduce(false, (a, b) -> a || b);
     }
 
-    public boolean equals(MovieCollection map) {
-        Movie[] a = this.values();
-        Movie[] b = map.values();
+    public boolean equals(MusicBandCollection musicBandHashtable) {
+        MusicBand[] a = this.values();
+        MusicBand[] b = musicBandHashtable.values();
         if (a.length != b.length) return false;
         for (int i = 0; i < a.length; i++) if (!a[i].equals(b[i])) return false;
         return true;
@@ -57,56 +57,56 @@ public class MusicBandCollection extends MusicBandHashtable<Long, MusicBand>{
     /**
      * sorts the elements of the collection by the number of Oscars received and prints them in a new order.
      *
-     * @see Movie
+     * @see MusicBand
      */
     @Override
     public String printAscending() {
-        Movie[] movies = getSortedMovies(false);
-        return Arrays.stream(movies).map(Object::toString).collect(Collectors.joining("\n"));
+        MusicBand[] musicBands = getSortedMusicBands(false);
+        return Arrays.stream(musicBands).map(Object::toString).collect(Collectors.joining("\n"));
     }
 
     /**
      * sorts the elements of the collection by the number of Oscars received in a reversed order and prints them.
      *
-     * @see Movie
+     * @see MusicBand
      */
     @Override
     public String printDescending() {
-        Movie[] movies = getSortedMovies(true);
-        return Arrays.stream(movies).map(Object::toString).collect(Collectors.joining("\n"));
+        MusicBand[] musicBands = getSortedMusicBands(true);
+        return Arrays.stream(musicBands).map(Object::toString).collect(Collectors.joining("\n"));
     }
 
     /**
      * get the id of the element in the collection
      *
-     * @param movie the element to get the id of
+     * @param musicBand the element to get the id of
      * @return the id of the element or -1 if the element is not in the collection
-     * @see Movie
+     * @see MusicBand
      */
     @Override
-    public Long getKey(Movie movie) {
-        return movie.getId();
+    public Long getKey(MusicBand musicBand) {
+        return musicBand.getId();
     }
 
     /**
      * get the elements of the collection
      *
-     * @return Movie[]
-     * @see Movie
+     * @return MusicBand[]
+     * @see MusicBand
      */
     @Override
-    public Movie[] values() {
-        return this.getMap().values().toArray(new Movie[this.size()]);
+    public MusicBand[] values() {
+        return this.getHashtable().values().toArray(new MusicBand[this.size()]);
     }
 
     /**
      * swap the elements if the provided elements has less Oscars than the element in the collection
      *
      * @param key   the key of the element in the collection
-     * @param movie the element to compare with
+     * @param musicBand the element to compare with
      * @return true if the elements are swapped, false otherwise
      */
-    public boolean replaceLower(Long key, Movie movie) {
+    public boolean replaceLower(Long key, MusicBand musicBand) {
         if (movie.oscarsCount() < this.get(key).oscarsCount()) {
             this.update(key, movie);
             return true;

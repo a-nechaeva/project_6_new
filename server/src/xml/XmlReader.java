@@ -1,8 +1,8 @@
 package xml;
 
-import basic.baseclasses.Movie;
+import basic.baseclasses.MusicBand;
 import basic.baseclasses.builders.Builder;
-import basic.moviecollection.MovieCollection;
+import basic.musicbandcollection.MusicBandCollection;
 import server.ServerLogger;
 import utils.string.StringUtils;
 import org.w3c.dom.*;
@@ -31,30 +31,30 @@ public class XmlReader extends XmlAction{
         return Arrays.stream(item.getClass().getDeclaredFields()).filter(f -> f.getName().equals(fieldName)).findFirst().orElse(null);
     }
 
-    public MovieCollection parse() {
-        MovieCollection movieCollection;
-        movieCollection = readXML(xml.getXmlFile());
+    public MusicBandCollection parse() {
+        MusicBandCollection musicBandCollection;
+        musicBandCollection = readXML(xml.getXmlFile());
         // Checking product uniqueness
-        if (movieCollection.size() > 1) {
-            for (Movie movie : movieCollection.values()) {
-                if (Arrays.stream(movieCollection.values()).anyMatch(p -> Objects.equals(p.getId(), movie.getId()) && p != movie)) {
-                    ServerLogger.getLogger().warning("WARNING: Movie with id " + movie.getId() + " already exists");
+        if (musicBandCollection.size() > 1) {
+            for (MusicBand musicBand : musicBandCollection.values()) {
+                if (Arrays.stream(musicBandCollection.values()).anyMatch(p -> Objects.equals(p.getId(), musicBand.getId()) && p != musicBand)) {
+                    ServerLogger.getLogger().warning("WARNING: MusicBand with id " + musicBand.getId() + " already exists");
                     ServerLogger.getLogger().warning("%Removing duplicates...");
-                    movieCollection.removeByKey(movie.getId());
+                    musicBandCollection.removeByKey(musicBand.getId());
                 }
             }
         }
-        return movieCollection;
+        return musicBandCollection;
     }
 
     @Deprecated(forRemoval = true)
-    public MovieCollection parse(File file) {
-        MovieCollection movieCollection;
-        movieCollection = readXML(file);
-        return movieCollection;
+    public MusicBandCollection parse(File file) {
+        MusicBandCollection musicBandCollection;
+        musicBandCollection = readXML(file);
+        return musicBandCollection;
     }
 
-    private MovieCollection readXML(File file) throws RuntimeException {
+    private MusicBandCollection readXML(File file) throws RuntimeException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         Document document;
         try {
@@ -65,22 +65,22 @@ public class XmlReader extends XmlAction{
         document.normalizeDocument();
         Element root = document.getDocumentElement();
         NodeList rootTree = root.getChildNodes();
-        MovieCollection movieCollection = new MovieCollection();
+        MusicBandCollection musicBandCollection = new MusicBandCollection();
         for (int i = 0; i < rootTree.getLength(); i++) {
             Node node = rootTree.item(i);
             // Getting only Products
-            if (node.getNodeName().equals("Movie")) {
-                Movie movie;
+            if (node.getNodeName().equals("MusicBand")) {
+                MusicBand musicBand;
                 try {
-                    movie = (Movie) parseItem(node);
+                    musicBand = (MusicBand) parseItem(node);
                 } catch (ClassNotFoundException e) {
                     ServerLogger.getLogger().warning(e.getMessage());
                     continue;
                 }
-                movieCollection.insert(movie);
+                musicBandCollection.insert(musicBand);
             }
         }
-        return movieCollection;
+        return musicBandCollection;
     }
 
     private Object parseItem(Node node) throws ClassNotFoundException {

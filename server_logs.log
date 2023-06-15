@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-06-15T01:22:27.462981600Z</date>
-  <millis>1686792147462</millis>
-  <nanos>981600</nanos>
+  <date>2023-06-15T12:48:07.339140400Z</date>
+  <millis>1686833287339</millis>
+  <nanos>140400</nanos>
   <sequence>0</sequence>
   <logger>ifmo.server.ServerLogger</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Starting server on port 2601</message>
 </record>
 <record>
-  <date>2023-06-15T01:22:51.702715900Z</date>
-  <millis>1686792171702</millis>
-  <nanos>715900</nanos>
+  <date>2023-06-15T12:48:26.462225800Z</date>
+  <millis>1686833306462</millis>
+  <nanos>225800</nanos>
   <sequence>1</sequence>
   <logger>ifmo.server.ServerLogger</logger>
   <level>WARNING</level>
@@ -25,40 +25,3 @@
   <thread>1</thread>
   <message>java.lang.ClassNotFoundException: commands.Command</message>
 </record>
-<record>
-  <date>2023-06-15T01:22:59.291430400Z</date>
-  <millis>1686792179291</millis>
-  <nanos>430400</nanos>
-  <sequence>2</sequence>
-  <logger>ifmo.server.ServerLogger</logger>
-  <level>WARNING</level>
-  <class>ifmo.server.UdpServer</class>
-  <method>run</method>
-  <thread>1</thread>
-  <message>java.lang.ClassNotFoundException: commands.Command</message>
-</record>
-<record>
-  <date>2023-06-15T01:23:20.761042100Z</date>
-  <millis>1686792200761</millis>
-  <nanos>42100</nanos>
-  <sequence>3</sequence>
-  <logger>ifmo.server.ServerLogger</logger>
-  <level>WARNING</level>
-  <class>ifmo.server.UdpServer</class>
-  <method>run</method>
-  <thread>1</thread>
-  <message>java.lang.ClassNotFoundException: commands.Command</message>
-</record>
-<record>
-  <date>2023-06-15T01:23:30.245956800Z</date>
-  <millis>1686792210245</millis>
-  <nanos>956800</nanos>
-  <sequence>4</sequence>
-  <logger>ifmo.server.ServerLogger</logger>
-  <level>WARNING</level>
-  <class>ifmo.server.UdpServer</class>
-  <method>run</method>
-  <thread>1</thread>
-  <message>java.lang.ClassNotFoundException: commands.Command</message>
-</record>
-</log>

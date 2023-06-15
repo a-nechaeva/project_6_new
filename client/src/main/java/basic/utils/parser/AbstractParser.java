@@ -22,6 +22,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public abstract class AbstractParser {
+
     protected Scanner scanner;
 
     public AbstractParser(InputStream inputStream) {
@@ -220,3 +221,4 @@ public abstract class AbstractParser {
         }
     }
 }
+

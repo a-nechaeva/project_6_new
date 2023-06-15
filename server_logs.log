@@ -2,9 +2,9 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2023-06-15T17:18:11.939644100Z</date>
-  <millis>1686849491939</millis>
-  <nanos>644100</nanos>
+  <date>2023-06-15T18:12:16.787295Z</date>
+  <millis>1686852736787</millis>
+  <nanos>295000</nanos>
   <sequence>0</sequence>
   <logger>ifmo.server.ServerLogger</logger>
   <level>INFO</level>
@@ -14,9 +14,9 @@
   <message>Starting server on port 2601</message>
 </record>
 <record>
-  <date>2023-06-15T17:18:35.582630900Z</date>
-  <millis>1686849515582</millis>
-  <nanos>630900</nanos>
+  <date>2023-06-15T18:12:31.746971800Z</date>
+  <millis>1686852751746</millis>
+  <nanos>971800</nanos>
   <sequence>1</sequence>
   <logger>ifmo.server.ServerLogger</logger>
   <level>WARNING</level>
@@ -25,4 +25,3 @@
   <thread>1</thread>
   <message>java.lang.ClassNotFoundException: commands.Command</message>
 </record>
-</log>

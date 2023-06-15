@@ -1,10 +1,11 @@
-package basic.baseenums;
+package ifmo.basic.baseenums;
 
 import java.io.Serializable;
 
 /**
  * The enum {@code Color} lists all the possible colors.
- * @since 13.06.2023
+ *
+ * @since ??.??.????
  */
 public enum Color implements Serializable {
     GREEN,

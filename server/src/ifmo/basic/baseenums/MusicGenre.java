@@ -1,10 +1,11 @@
-package basic.baseenums;
+package ifmo.basic.baseenums;
 
 import java.io.Serializable;
 
 /**
- * The enum {@code MusicGenre} lists all the possible music genres.
- * @since 13.06.2023
+ * The enum {@code MusicGenre} lists all the possible movie genres.
+ *
+ * @since ??.??.????
  */
 public enum MusicGenre implements Serializable{
     RAP,

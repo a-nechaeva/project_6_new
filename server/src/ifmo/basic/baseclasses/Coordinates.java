@@ -1,14 +1,13 @@
-package basic.baseclasses;
+package ifmo.basic.baseclasses;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 /**
  * The Coordinates class represents a pair of coordinates (x, y).
  * It implements the Serializable interface, allowing instances to be written to and read from streams.
  *
- * @version 1.0
- * @since 13.06.2023
+ * @version 1.0?
+ * @since ??.??.????
  */
 public class Coordinates implements Serializable {
     private Float x;
@@ -30,8 +29,8 @@ public class Coordinates implements Serializable {
      * Constructs a new Coordinates object with random x and y values.
      */
     public Coordinates() {
-        this.x = (float)(Math.random() * 1000 - 521);
-        this.y = (double)(Math.random() * 256);
+        this.x = (float) (Math.random() * 1000 - 521);
+        this.y = (Double) (Math.random() * 256);
     }
 
     /**
@@ -44,21 +43,21 @@ public class Coordinates implements Serializable {
     }
 
     /**
-     * Returns the y value of the coordinate.
-     *
-     * @return the y value of the coordinate
-     */
-    public Double getY() {
-        return y;
-    }
-
-    /**
      * Sets the x value of the coordinate.
      *
      * @param x the new x value of the coordinate
      */
     public void setX(Float x) {
         this.x = x;
+    }
+
+    /**
+     * Returns the y value of the coordinate.
+     *
+     * @return the y value of the coordinate
+     */
+    public Double getY() {
+        return y;
     }
 
     /**

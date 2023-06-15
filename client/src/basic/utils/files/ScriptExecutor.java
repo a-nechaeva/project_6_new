@@ -69,7 +69,7 @@ public class ScriptExecutor {
                     continue;
                 }
             }
-            if (Set.of(CommandType.INSERT, CommandType.UPDATE, CommandType.REPLACE_IF_LOWER).contains(commandType)) {
+            if (Set.of(CommandType.INSERT, CommandType.UPDATE).contains(commandType)) {
                 if (args.length < 1 || index + 13 >= lines.size()) {
                     System.err.println("Not enough arguments/data for command " + commandType + ". Skipping line: " + line);
                     continue;

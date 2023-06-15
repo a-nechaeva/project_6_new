@@ -1,0 +1,17 @@
+<MusicBandCollection>
+    <MusicBand>
+        <id>5</id>
+        <name>fd</name>
+        <Coordinates>
+            <x>100.0</x>
+            <y>200</y>
+        </Coordinates>
+        <creation_date>2023-03-28T17:05:53.030202031+03:00[Europe/Moscow]</creation_date>
+        <oscars_count>300</oscars_count>
+        <genre>COMEDY</genre>
+        <mpaa_rating>PG</mpaa_rating>
+        <Studio>
+            <name>фвыа</name>
+        </Studio>
+    </MusicBand>
+</MusicBandCollection>

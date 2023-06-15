@@ -39,7 +39,7 @@ public class ClientCore {
                 connector.send(CommandSerializer.serialize(command));
                 String response = connector.receive();
 
-                if (List.of(CommandType.SHOW, CommandType.PRINT_ASCENDING, CommandType.PRINT_DESCENDING).contains(commandType)) {
+                if (List.of(CommandType.SHOW, CommandType.PRINT_FIELD_DESCENDING_SINGLES_COUNT).contains(commandType)) {
                     System.out.print("\033[H\033[2J");
                     System.out.flush();
                     String[] movies = response.split("\\.\n");

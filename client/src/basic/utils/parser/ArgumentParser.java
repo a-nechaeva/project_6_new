@@ -12,8 +12,8 @@ import java.lang.reflect.Field;
 import java.util.NoSuchElementException;
 
 public class ArgumentParser extends AbstractParser{
-    public ArgumentParser(String[] movieFields) {
-        super(new ByteArrayInputStream(String.join("\n", movieFields).getBytes()));
+    public ArgumentParser(String[] musicBandFields) {
+        super(new ByteArrayInputStream(String.join("\n", musicBandFields).getBytes()));
     }
 
     @Override

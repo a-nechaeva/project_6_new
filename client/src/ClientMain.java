@@ -16,7 +16,7 @@ public class ClientMain {
         }
     }
 
-    private static final int serverPort = 5050;
+    private static final int serverPort = 2601;
 
     public static void main(String[] args) {
         ClientCore core = new ClientCore(serverAddress, serverPort);

@@ -1,64 +1,51 @@
-package basic.baseclasses;
+package ifmo.basic.baseclasses;
 
-
-import basic.auxiliary.Randomness;
-import basic.baseenums.MusicGenre;
+import ifmo.basic.baseclasses.builders.annotations.Generated;
+import ifmo.basic.baseenums.MusicGenre;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * The `MusicBand` class represents a musicBand, which includes its name, creation date,
- * number of participants, genre, count of singles, and studio.
+ * The `Movie` class represents a movie, which includes its name, creation date,
+ * number of Oscars it won, genre, MPAA rating, and director.
  *
- * @version 1.0
- * @since 13.06.2023
+ * @version 99999999.9999999
+ * @since 2023-02-02
  */
-
-
 public class MusicBand implements Comparable<MusicBand>, Serializable{
     @Serial
+    @Generated
     private static final long serialVersionUID = 6529685098267757690L;
-    /**
-     * Reset the ANSI color.
-     */
-    public static final String whcr = "\u001B[0m";
 
-    /**
-     * The ANSI color for blue.
-     */
-    public static final String blcr = "\u001B[34m";
-
-    /**
-     * the ANSI color for purple.
-     */
-    public static final String prcr = "\u001B[35m";
-    /**
-     * The next unique ID to be assigned to a musicBand instance.
-     */
-    private static Long nextId = Long.valueOf(1);
+    @Generated
+    private static Long nextId = 1L;
 
     /**
      * The unique ID of the musicBand.
      * Generates automatically, can't be null, greater than zero.
      */
-    private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+    private Long id;
+
     /**
      * The name of the musicBand. Can't be null and an empty sequence.
      */
-    private String name; //Поле не может быть null, Строка не может быть пустой
+    private String name;
+
     /**
      * The coordinates of the musicBand. Can't be null
+     *
      * @see Coordinates
      */
-    private Coordinates coordinates; //Поле не может быть null
+    private Coordinates coordinates;
+
     /**
-     * The creation date of the musicBand. Generates automatically, can't be null.
+     * The creation date of the movie. Generates automatically, can't be null.
      */
-    private java.time.ZonedDateTime creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
+    private java.time.ZonedDateTime creationDate;
+
     /**
      * The number of musicBand's participants. Not negative.
      */
@@ -101,7 +88,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable{
     public MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount,
                      java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio){
         if (name == null || name.isEmpty() || coordinates == null ||
-        numberOfParticipants < 0 || singlesCount < 0) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
+                numberOfParticipants < 0 || singlesCount < 0) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
         this.id = nextId++;
         this.name = name;
         this.coordinates = coordinates;
@@ -112,20 +99,7 @@ public class MusicBand implements Comparable<MusicBand>, Serializable{
         this.studio = studio;
         this.creationDate = ZonedDateTime.now();
     }
-    public MusicBand(Long id, String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount,
-                     java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio) {
-        if (name == null || name.isEmpty() || coordinates == null ||
-                numberOfParticipants < 0 || singlesCount < 0) throw new IllegalArgumentException("The fields can't be null or empty sequences.");
-        this.id = id;
-        this.name = name;
-        this.coordinates = coordinates;
-        this.numberOfParticipants = numberOfParticipants;
-        this.singlesCount = singlesCount;
-        this.establishmentDate = establishmentDate;
-        this.genre = genre;
-        this.studio = studio;
-        this.creationDate = ZonedDateTime.now();
-    }
+
     /**
      * Constructs a `Movie` instance with the specified ID, name, coordinates, creation date,
      * number of Oscars, genre, MPAA rating, and director.
@@ -156,32 +130,6 @@ public class MusicBand implements Comparable<MusicBand>, Serializable{
         this.studio = studio;
         this.creationDate = ZonedDateTime.now();
     }
-    /**
-     * Constructs a `MusicBand` instance with the specified name, and random values for the other attributes.
-     *
-     * @param name the name of the movie
-     * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount,
-     *                         java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
-     */
-    public MusicBand(String name)  {
-        this.id = nextId++;
-        this.name = name;
-        this.coordinates = new Coordinates();
-        this.creationDate = java.time.ZonedDateTime.now();
-        this.numberOfParticipants = 0;
-        this.singlesCount = 0;
-        this.establishmentDate = LocalDate.of(1999, 1, 31);
-        this.genre = Randomness.random(MusicGenre.class);
-        this.studio = new Studio();
-        this.creationDate = ZonedDateTime.now();
-    }
-
-    /**
-     * Constructs a `MusicBand` instance with default values for all attributes.
-     * @see MusicBand#MusicBand(String name, Coordinates coordinates, int numberOfParticipants, Integer singlesCount,
-     *                            java.time.LocalDate establishmentDate, MusicGenre genre, Studio studio)
-     */
-    public MusicBand() {}
 
     /**
      * @return the name of the musicBand
@@ -318,6 +266,22 @@ public class MusicBand implements Comparable<MusicBand>, Serializable{
     }
 
 
+    public Object[] getFields() {
+        return new Object[]{id, name, coordinates, creationDate, numberOfParticipants,singlesCount, establishmentDate, genre, studio};
+    }
+
+    /**
+     * Used to compare musicBands
+     */
+
+    @Override
+    public int compareTo(MusicBand other) {
+        int nameCompare = this.name.toLowerCase().compareTo(other.name.toLowerCase());
+        if (nameCompare == 0)
+            return (int) (this.getNumberOfParticipants() - other.getNumberOfParticipants());
+        return this.name.toLowerCase().compareTo(other.name.toLowerCase());
+    }
+
     /**
      * Used to print the musicBand info.
      * @return the musicBand info
@@ -334,13 +298,5 @@ public class MusicBand implements Comparable<MusicBand>, Serializable{
                 ", establishment date = " + this.establishmentDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")) +
                 ", genre = " + this.genre +
                 ", studio = " + this.studio;
-    }
-
-    @Override
-    public int compareTo(MusicBand other) {
-        int nameCompare = this.name.toLowerCase().compareTo(other.name.toLowerCase());
-        if (nameCompare == 0)
-            return (int) (this.getNumberOfParticipants() - other.getNumberOfParticipants());
-        return this.name.toLowerCase().compareTo(other.name.toLowerCase());
     }
 }

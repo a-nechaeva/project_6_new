@@ -74,7 +74,7 @@ public class Studio implements Serializable{
         this.name = name;
     }
 
-    @Override
+
     public boolean equals(Studio p) {
         return this.name.equals(p.name);
     }
